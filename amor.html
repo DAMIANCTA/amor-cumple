@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Feliz 25, Mi Amor</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000 url('https://www.transparenttextures.com/patterns/stardust.png');
+      background-size: cover;
+      color: #ffffff;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 2em;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      color: turquoise;
+      font-size: 3em;
+      text-shadow: 0 0 15px turquoise;
+      margin-bottom: 0.5em;
+    }
+
+    .mensaje {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 2em;
+      border-radius: 20px;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 0 30px turquoise;
+    }
+
+    p {
+      font-size: 1.3em;
+      line-height: 1.6em;
+      margin-bottom: 1em;
+    }
+
+    .rosas {
+      margin-top: 2em;
+    }
+
+    .rosa {
+      width: 100px;
+      margin: 0 10px;
+      transition: transform 0.4s ease;
+      filter: drop-shadow(0 0 10px #00ffff);
+    }
+
+    .rosa:hover {
+      transform: scale(1.1);
+    }
+
+    .corazon {
+      font-size: 3em;
+      color: turquoise;
+      animation: latir 1s infinite;
+    }
+
+    @keyframes latir {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    audio {
+      margin-top: 1.5em;
+    }
+
+    .firework {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: turquoise;
+      border-radius: 50%;
+      animation: explode 1s ease-out forwards;
+    }
+
+    @keyframes explode {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(3); opacity: 0; }
+    }
+  </style>
+</head>
+<body onload="launchFireworks()">
+
+  <h1>🎂 Feliz 25 añitos, Mi Amorcito BB 🎂</h1>
+  <div class="corazon">💙</div>
+
+  <div class="mensaje">
+    <p>Amor, ¿te acuerdas cuando te vi por primera vez en la cancha de básquet? </p>
+    <p>No podía dejar de mirarte, eras tú, con tu energía, tu risa, tu forma tan hermosa de jugar en la cancha.</p>
+    <p>Cuando terminamos el partido, te fuiste rápido… y yo corrí detrás de ti solo para pedirte tu número 💌.</p>
+    <p>Desde ese día, no dejamos de hablar. Comenzamos a compartir todo: fuimos a comer sushi 🍣, al Vulcano Park 🎢, a la piscina 🏊, a escalar, ¡y a tantas cosas más!</p>
+    <p>Hemos hecho bailoterapia 🕺💃, cocinado juntos, reído, llorado, y nos hemos amado. Te admiro tanto mi ingeniera hermosa, valiente, talentosa y soñadora 💻✨</p>
+    <p>Gracias por estos 2 años a tu lado y por cada segundo que hemos compartido. Hoy celebro tus 25 añitos, pero para mí eres eterna 💖</p>
+    <p><strong>Te amo con el alma, mi princesa mi osita bubu🌹</strong></p>
+
+    <div class="rosas">
+      <img src="1.jpg" alt="Rosa Turquesa" class="rosa">
+      <img src="2.jpg" alt="Rosa Azul Oscura" class="rosa">
+      <img src="3.jpg" alt="Rosa Turquesa" class="rosa">
+    </div>
+
+    <!-- Audio con autoplay + fallback de reproducción al clic -->
+    <audio id="musica" autoplay loop>
+      <source src="1.mp3" type="audio/mpeg">
+      Tu navegador no soporta audio.
+    </audio>
+
+  </div>
+
+  <script>
+    function launchFireworks() {
+      const colors = ['turquoise', '#0066cc', '#33ccff'];
+      for (let i = 0; i < 25; i++) {
+        const firework = document.createElement('div');
+        firework.className = 'firework';
+        firework.style.left = `${Math.random() * window.innerWidth}px`;
+        firework.style.top = `${Math.random() * window.innerHeight}px`;
+        firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+        firework.style.animationDelay = `${Math.random() * 0.5}s`;
+        document.body.appendChild(firework);
+        setTimeout(() => firework.remove(), 1500);
+      }
+    }
+
+    // Reproducir audio al primer clic si el navegador lo bloquea
+    window.addEventListener('click', () => {
+      const audio = document.getElementById('musica');
+      if (audio && audio.paused) {
+        audio.play().catch(() => {
+          console.log("Autoplay bloqueado. El usuario debe interactuar.");
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
